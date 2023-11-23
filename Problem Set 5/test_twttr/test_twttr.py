@@ -1,15 +1,18 @@
-vowels = ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U')
+from twttr import shorten
 
-def main():
-    prompt = input("")
-    shorten(prompt)
+def test_upper():
+    assert shorten("TWITTER") == "TWTTR"
 
-def shorten(prompt):
-    newstr = prompt
-    for c in prompt:
-        if c in vowels:
-            newstr = newstr.replace(c , "")
-    print (newstr)
+def test_empty():
+    assert shorten("") == ""
 
-if __name__ == "__main__":
-    main()
+def test_novowels():
+    assert shorten("rhythm") == "rhythm"
+
+def test_onlyvowel():
+    assert shorten("aeiou") == ""
+
+def test_mixed():
+    assert shorten("Hello123!@ World") == "Hll123!@ Wrld"
+
+
